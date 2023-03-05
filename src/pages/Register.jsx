@@ -26,7 +26,7 @@ const Register = (props) => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox"></Form.Group>
                 <Form.Check type="checkbox" label="Check me out" />
                 <Button variant="primary" type="submit">
-                  Submit
+                  Register
                 </Button>
                 <Link className="d-block" to={'/login'}>
                   Sudah punya akun? Login di sini

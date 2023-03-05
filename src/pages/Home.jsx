@@ -1,11 +1,11 @@
 import {Container, Row, Col, Carousel, Card, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import slide1 from './img/slide1.jpg';
-import slide2 from './img/slide2.jpg';
-import slide3 from './img/slide3.jpg';
+import slide1 from './../img/slide1.jpg';
+import slide2 from './../img/slide2.jpg';
+import slide3 from './../img/slide3.jpg';
 const Home = () => {
   return (
-    <>
+    <div className="min-vh-100">
       <Carousel>
         <Carousel.Item>
           <img className="d-block w-100" style={{maxHeight: '500px', objectFit: 'cover'}} src={slide1} alt="First slide" />
@@ -79,7 +79,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 };
 export default Home;

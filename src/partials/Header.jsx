@@ -1,5 +1,5 @@
-import {Navbar, Container, Nav, Form, Button} from 'react-bootstrap';
-import {NavLink} from 'react-router-dom';
+import {Navbar, Container, Nav, Form, Button, NavDropdown} from 'react-bootstrap';
+import {Link, NavLink} from 'react-router-dom';
 const Header = () => {
   return (
     <Navbar bg="white" style={{borderBottom: '2px solid black', position: 'sticky', top: '0', zIndex: '99'}} className="p-3" expand="lg">
@@ -22,6 +22,14 @@ const Header = () => {
             <Nav.Link as={NavLink} to="/login">
               LOGIN
             </Nav.Link>
+            <NavDropdown title="Account" id="basic-nav-dropdown">
+              <NavDropdown.Item>
+                <Link to={'/login'}>Login</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to={'/dashboard'}>Dashboard</Link>
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <Form className="d-flex">
             <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />

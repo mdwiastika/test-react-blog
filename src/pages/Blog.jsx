@@ -1,11 +1,11 @@
-import slide1 from './img/slide1.jpg';
+import slide1 from './../img/slide1.jpg';
 import {Container, Card, Button, Row, Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import './assets/css/box.css';
+import './../assets/css/box.css';
 const Blog = (props) => {
   return (
     <>
-      <Container>
+      <Container className="min-vh-100">
         <h2 className="d-flex justify-content-center text-primary mt-4 mb-2 fw-bold">Main Blog</h2>
         <Row>
           <Col>
