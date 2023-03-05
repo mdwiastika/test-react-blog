@@ -22,7 +22,7 @@ const Login = (props) => {
                     <Form.Control type="password" name="password" placeholder="Password" />
                   </Form.Group>
                   <Button variant="primary" type="submit">
-                    Submit
+                    Login
                   </Button>
                   <Link className="d-block" to={'/register'}>
                     Belum punya akun? Daftar di sini

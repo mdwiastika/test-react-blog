@@ -1,9 +1,10 @@
 import {Button, Card, Col, Container, Form, Row} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 const Register = (props) => {
   return (
-    <Container>
-      <Row>
+    <Container className="min-vh-100">
+      <Row className="d-flex justify-content-center mt-4">
         <Col md={12} lg={8}>
           <Card>
             <Card.Header>{props.title}</Card.Header>
@@ -27,6 +28,9 @@ const Register = (props) => {
                 <Button variant="primary" type="submit">
                   Submit
                 </Button>
+                <Link className="d-block" to={'/register'}>
+                  Belum punya akun? Daftar di sini
+                </Link>
               </Form>
             </Card.Body>
           </Card>
