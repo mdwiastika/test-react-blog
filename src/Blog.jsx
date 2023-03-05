@@ -45,8 +45,8 @@ const Blog = (props) => {
             </Container>
           </Col>
         </Row>
-        <Row className="d-flex align-items-center justify-content-center mx-auto g-">
-          <h2 className="d-flex justify-content-center text-primary mt-4 mb-2 fw-bold">All Blog</h2>
+        <h2 className="d-flex justify-content-center text-primary mt-4 mb-2 fw-bold">All Blog</h2>
+        <Row className="d-flex align-items-center justify-content-center mx-auto g-3">
           <Col sm={12} md={4} lg={3}>
             <Card>
               <Card.Img variant="top" src={slide1} />

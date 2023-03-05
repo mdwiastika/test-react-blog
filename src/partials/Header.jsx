@@ -19,6 +19,9 @@ const Header = () => {
             <Nav.Link as={NavLink} to="/about">
               ABOUT
             </Nav.Link>
+            <Nav.Link as={NavLink} to="/login">
+              LOGIN
+            </Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
