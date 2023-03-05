@@ -28,8 +28,8 @@ const Register = (props) => {
                 <Button variant="primary" type="submit">
                   Submit
                 </Button>
-                <Link className="d-block" to={'/register'}>
-                  Belum punya akun? Daftar di sini
+                <Link className="d-block" to={'/login'}>
+                  Sudah punya akun? Login di sini
                 </Link>
               </Form>
             </Card.Body>
