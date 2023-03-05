@@ -32,7 +32,7 @@ const Home = () => {
         </Carousel.Item>
       </Carousel>
       <Container>
-        <h1 className="d-flex justify-content-center pt-3">My Blog</h1>
+        <h1 className="d-flex justify-content-center pt-3 mt-3">My Blog</h1>
         <Link className="d-flex justify-content-end text-primary fs-5 me-3 pb-1" to="/blog" style={{textDecoration: 'none'}}>
           Show more
         </Link>
@@ -40,7 +40,7 @@ const Home = () => {
           <Col sm={12} md={4} lg={3}>
             <Card>
               <Card.Img variant="top" src={slide1} />
-              <Card.Body>
+              <Card.Body className="text-dark">
                 <Card.Title>First Card</Card.Title>
                 <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
                 <Button variant="primary">Go somewhere</Button>
@@ -50,7 +50,7 @@ const Home = () => {
           <Col sm={12} md={4} lg={3}>
             <Card>
               <Card.Img variant="top" src={slide1} />
-              <Card.Body>
+              <Card.Body className="text-dark">
                 <Card.Title>Second Card</Card.Title>
                 <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
                 <Button variant="primary">Go somewhere</Button>
@@ -60,7 +60,7 @@ const Home = () => {
           <Col sm={12} md={4} lg={3}>
             <Card>
               <Card.Img variant="top" src={slide1} />
-              <Card.Body>
+              <Card.Body className="text-dark">
                 <Card.Title>Third Card</Card.Title>
                 <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
                 <Button variant="primary">Go somewhere</Button>
@@ -70,7 +70,7 @@ const Home = () => {
           <Col sm={12} md={4} lg={3}>
             <Card>
               <Card.Img variant="top" src={slide1} />
-              <Card.Body>
+              <Card.Body className="text-dark">
                 <Card.Title>Fourth Card</Card.Title>
                 <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
                 <Button variant="primary">Go somewhere</Button>
@@ -78,15 +78,6 @@ const Home = () => {
             </Card>
           </Col>
         </Row>
-        <Card border="secondary" className="pt-4 w-100  d-flex justify-content-center " style={{width: '18rem'}}>
-          <Card.Header>Contact me</Card.Header>
-          <Card.Body>
-            <div className="d-flex justify-content-start">
-              <div>Telepon:</div>
-              <div>089127812</div>
-            </div>
-          </Card.Body>
-        </Card>
       </Container>
     </>
   );

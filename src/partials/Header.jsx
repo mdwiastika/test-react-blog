@@ -2,12 +2,14 @@ import {Navbar, Container, Nav, Form, Button} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom';
 const Header = () => {
   return (
-    <Navbar bg="white" style={{boxShadow: '0px 1px 5px black', borderBottom: '1px solid black'}} className="p-3" expand="lg">
+    <Navbar bg="white" style={{borderBottom: '2px solid black', position: 'sticky', top: '0', zIndex: '99'}} className="p-3" expand="lg">
       <Container>
-        <Navbar.Brand>MarcelBlog</Navbar.Brand>
+        <Navbar.Brand>
+          <h4 className="text-primary font-bold">MarcelBlog</h4>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto fs-6">
+          <Nav className="ms-auto fs-6 me-3">
             <Nav.Link as={NavLink} to="/">
               HOME
             </Nav.Link>
