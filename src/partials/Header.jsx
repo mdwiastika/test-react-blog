@@ -19,9 +19,6 @@ const Header = () => {
             <Nav.Link as={NavLink} to="/about">
               ABOUT
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/login">
-              LOGIN
-            </Nav.Link>
             <NavDropdown title="Account" id="basic-nav-dropdown">
               <NavDropdown.Item>
                 <Link to={'/login'}>Login</Link>

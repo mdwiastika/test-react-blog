@@ -1,6 +1,6 @@
 import slide1 from './../img/slide1.jpg';
 import {Container, Card, Button, Row, Col} from 'react-bootstrap';
-import {Link, Outlet} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './../assets/css/box.css';
 const Blog = (props) => {
   return (
