@@ -1,6 +1,25 @@
 import {Navbar, Container, Nav, Form, Button, NavDropdown} from 'react-bootstrap';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, useNavigate} from 'react-router-dom';
 const Header = () => {
+  const navigate = useNavigate();
+  const postLogout = async () => {
+    const fetchingData = await fetch('http://127.0.0.1:8000/api/logout', {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.token,
+      },
+    }).catch((err) => console.log(err));
+    const jsonData = await fetchingData.json().catch((err) => console.log(err));
+    return jsonData;
+  };
+  const formLogout = async (event) => {
+    event.preventDefault();
+    const dataLogout = await postLogout();
+    console.log(dataLogout);
+    localStorage.removeItem('token');
+    console.log('berhasil logout');
+    navigate('/login');
+  };
   return (
     <Navbar bg="white" style={{borderBottom: '2px solid black', position: 'sticky', top: '0', zIndex: '99'}} className="p-3" expand="lg">
       <Container>
@@ -20,12 +39,22 @@ const Header = () => {
               ABOUT
             </Nav.Link>
             <NavDropdown title="Account" id="basic-nav-dropdown">
-              <NavDropdown.Item>
-                <Link to={'/login'}>Login</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to={'/dashboard'}>Dashboard</Link>
-              </NavDropdown.Item>
+              {localStorage.token ? (
+                <>
+                  <NavDropdown.Item>
+                    <Link to={'/dashboard'}>Dashboard</Link>
+                  </NavDropdown.Item>
+                  <Form onSubmit={formLogout} method="POST">
+                    <button type="submit" style={{marginLeft: '10px', backgroundColor: 'transparent', border: 'none'}} className="text-danger">
+                      Logout
+                    </button>
+                  </Form>
+                </>
+              ) : (
+                <NavDropdown.Item>
+                  <Link to={'/login'}>Login</Link>
+                </NavDropdown.Item>
+              )}
             </NavDropdown>
           </Nav>
           <Form className="d-flex">

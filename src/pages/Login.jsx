@@ -1,12 +1,17 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Button, Card, Col, Container, Form, Row, ToastContainer} from 'react-bootstrap';
 import {Link, useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
-
+import 'react-toastify/dist/ReactToastify.css';
 const Login = (props) => {
+  useEffect(() => {
+    if (localStorage.token) {
+      navigate('/');
+    }
+  });
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
   const fetchingLogin = async (dataLogin) => {
     const fetchingData = await fetch('http://127.0.0.1:8000/api/login', {
       method: 'POST',
@@ -23,16 +28,17 @@ const Login = (props) => {
     const getDataLogin = await fetchingLogin({email, password});
     console.log(getDataLogin);
     if (getDataLogin.token) {
-      localStorage.setItem('token', getDataLogin.token);
+      localStorage.setItem('token', `Bearer ${getDataLogin.token}`);
       navigate('/');
     } else {
-      toast("username or passsword doesn't match");
+      toast(getDataLogin.message);
+      console.log('oke');
     }
   };
   return (
     <>
-      <ToastContainer />
       <Container className="min-vh-100">
+        <ToastContainer />
         <Row className="d-flex justify-content-center mt-4">
           <Col md={12} lg={8}>
             <Card>

@@ -1,6 +1,11 @@
 import {Card, Col, Container, Row} from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 import slide1 from './../img/slide1.jpg';
 const BlogDetail = () => {
+  const navigate = useNavigate();
+  if (!localStorage.token) {
+    navigate('/login');
+  }
   return (
     <Container>
       <Row className="mt-4 d-flex justify-content-center">

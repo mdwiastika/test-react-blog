@@ -1,10 +1,19 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Button, Card, Col, Container, Form, Row} from 'react-bootstrap';
 import {Link, useNavigate} from 'react-router-dom';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Register = (props) => {
   // post data register to laravel
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.token) {
+      navigate('/');
+    }
+  });
+  if (localStorage.token) {
+    navigate('/');
+  }
   async function fetchingData(dataRegister) {
     const fetchRegister = await fetch('http://127.0.0.1:8000/api/register', {
       method: 'POST',
@@ -19,7 +28,6 @@ const Register = (props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
   const registerHandler = async (event) => {
     event.preventDefault();
     const getDataRegister = await fetchingData({name, email, password});
