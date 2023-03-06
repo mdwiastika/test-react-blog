@@ -1,8 +1,23 @@
 import slide1 from './../img/slide1.jpg';
 import {Container, Card, Button, Row, Col} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {json, Link} from 'react-router-dom';
 import './../assets/css/box.css';
+import {useEffect, useState} from 'react';
 const Blog = (props) => {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchAllBlog = async () => {
+      const fetchingData = await fetch('http://127.0.0.1:8000/api/post', {
+        method: 'GET',
+      }).catch((err) => console.log(err));
+      const jsonData = await fetchingData.json().catch((err) => console.log(err));
+      console.log(jsonData);
+      setBlogs(jsonData.data);
+      setLoading(false);
+    };
+    fetchAllBlog();
+  }, []);
   return (
     <>
       <Container className="min-vh-100">
@@ -47,46 +62,30 @@ const Blog = (props) => {
         </Row>
         <h2 className="d-flex justify-content-center text-primary mt-4 mb-2 fw-bold">All Blog</h2>
         <Row className="d-flex align-items-center justify-content-center mx-auto g-3">
-          <Col sm={12} md={4} lg={3}>
-            <Card>
-              <Card.Img variant="top" src={slide1} />
-              <Card.Body className="text-dark">
-                <Card.Title>First Card</Card.Title>
-                <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col sm={12} md={4} lg={3}>
-            <Card>
-              <Card.Img variant="top" src={slide1} />
-              <Card.Body className="text-dark">
-                <Card.Title>Second Card</Card.Title>
-                <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col sm={12} md={4} lg={3}>
-            <Card>
-              <Card.Img variant="top" src={slide1} />
-              <Card.Body className="text-dark">
-                <Card.Title>Third Card</Card.Title>
-                <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col sm={12} md={4} lg={3}>
-            <Card>
-              <Card.Img variant="top" src={slide1} />
-              <Card.Body className="text-dark">
-                <Card.Title>Fourth Card</Card.Title>
-                <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
+          {loading ? (
+            <h2>Loading Article...</h2>
+          ) : (
+            <>
+              {blogs.map((blog) => {
+                return (
+                  <Col sm={12} md={4} lg={3}>
+                    <Card>
+                      <Card.Img variant="top" src={'http://127.0.0.1:8000/storage/' + blog.image} />
+                      <Card.Body className="text-dark">
+                        <Card.Title>{blog.title}</Card.Title>
+                        <Card.Text>{blog.limit_post}</Card.Text>
+                        <Button variant="primary">
+                          <Link to={`/blog/${blog.id}`} className="text-white">
+                            Baca Selengkapnya
+                          </Link>
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                );
+              })}
+            </>
+          )}
         </Row>
       </Container>
     </>
