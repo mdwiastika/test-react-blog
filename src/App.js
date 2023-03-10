@@ -1,11 +1,9 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Routes} from 'react-router-dom';
-import Header from './partials/Header';
 import Home from './pages/Home';
 import Blog from './pages/Blog';
 import About from './pages/About';
-import Footer from './partials/Footer';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -14,7 +12,6 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <div className="text-dark">
-      <Header></Header>
       <Routes>
         <Route index element={<Home title="Halaman Home" />}></Route>
         <Route path="blog">
@@ -27,7 +24,6 @@ function App() {
         <Route path="dashboard" element={<Dashboard />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
-      <Footer></Footer>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import slide1 from './../img/slide1.jpg';
 import {Container, Card, Button, Row, Col} from 'react-bootstrap';
-import {json, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './../assets/css/box.css';
 import {useEffect, useState} from 'react';
+import Header from './../partials/Header';
+import Footer from './../partials/Footer';
 const Blog = (props) => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,6 +22,7 @@ const Blog = (props) => {
   }, []);
   return (
     <>
+      <Header></Header>
       <Container className="min-vh-100">
         <h2 className="d-flex justify-content-center text-primary mt-4 mb-2 fw-bold">Main Blog</h2>
         <Row>
@@ -88,6 +91,7 @@ const Blog = (props) => {
           )}
         </Row>
       </Container>
+      <Footer></Footer>
     </>
   );
 };
